@@ -83,7 +83,7 @@ const Projects: React.FC = () => {
           doc.addImage(canvas.toDataURL('image/png'), 'PNG', x, y, imgWidth, imgHeight);
           resolve(true);
         };
-        logoImg.onerror = () => resolve(false);
+        logoImg.onerror = () => reject(new Error('Failed to load watermark logo'));
       });
     } catch (error) {
       console.log('Logo não encontrado, continuando sem marca d\'água');
@@ -104,7 +104,7 @@ const Projects: React.FC = () => {
           doc.addImage(logoImg, 'PNG', 15, 5, 25, 25);
           resolve(true);
         };
-        logoImg.onerror = () => resolve(false);
+        logoImg.onerror = () => reject(new Error('Failed to load header logo'));
       });
     } catch (error) {
       console.log('Logo não encontrado no cabeçalho');
