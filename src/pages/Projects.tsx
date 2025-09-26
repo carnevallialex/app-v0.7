@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
           const x = (210 - imgWidth) / 2;
           const y = (297 - imgHeight) / 2;
           
-          doc.addImage(canvas, 'PNG', x, y, imgWidth, imgHeight);
+          doc.addImage(canvas.toDataURL('image/png'), 'PNG', x, y, imgWidth, imgHeight);
           resolve(true);
         };
         logoImg.onerror = () => resolve(false);
