@@ -74,16 +74,13 @@ const Projects: React.FC = () => {
           ctx.globalAlpha = 0.08;
           ctx.drawImage(logoImg, 0, 0);
           
-          // Converter para base64
-          const watermarkData = canvas.toDataURL('image/png');
-          
           // Adicionar marca d'água centralizada
           const imgWidth = 80;
           const imgHeight = 80;
           const x = (210 - imgWidth) / 2;
           const y = (297 - imgHeight) / 2;
           
-          doc.addImage(watermarkData, 'PNG', x, y, imgWidth, imgHeight);
+          doc.addImage(canvas, 'PNG', x, y, imgWidth, imgHeight);
           resolve(true);
         };
         logoImg.onerror = () => resolve(false);
